@@ -16,6 +16,7 @@ declare module 'react-native-copilot' {
     handleNext: () => void;
     handlePrev: () => void;
     handleStop: () => void;
+    handleSkip: () => void;
     currentStep: Step;
   };
 
@@ -24,6 +25,7 @@ declare module 'react-native-copilot' {
   };
 
   export type OverlayType = 'svg' | 'view';
+
   /**
    * Options for the copilot HOC
    */
@@ -71,6 +73,7 @@ declare module 'react-native-copilot' {
     order: number; // A positive number indicating the order of the step in the entire walkthrough
     text: string; // The text shown as the description for the step
     active?: boolean; // If set to false the step is ignored
+    steps: number | undefined;
   };
 
   /**

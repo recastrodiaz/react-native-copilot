@@ -8,6 +8,7 @@ import type { SvgMaskPathFn } from '../types';
 
 type Props = {
   stop: () => void,
+  skip: () => void,
   next: () => void,
   prev: () => void,
   currentStepNumber: number,
@@ -230,6 +231,11 @@ class CopilotModal extends Component<Props, State> {
     this.props.stop();
   }
 
+  handleSkip = () => {
+    this.reset();
+    this.props.skip();
+  }
+
   handleMaskClick = () => {
     if (this.props.stopOnOutsideClick) {
       this.handleStop();
@@ -292,6 +298,7 @@ class CopilotModal extends Component<Props, State> {
           handleNext={this.handleNext}
           handlePrev={this.handlePrev}
           handleStop={this.handleStop}
+          handleSkip={this.handleSkip}
           labels={this.props.labels}
         />
       </Animated.View>,

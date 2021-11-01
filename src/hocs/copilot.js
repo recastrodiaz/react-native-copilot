@@ -179,14 +179,24 @@ const copilot = ({
         this.eventEmitter.emit('stop');
       }
 
+      skip = async (): void => {
+        await this.setVisibility(false);
+        this.eventEmitter.emit('skip');
+      }
+
       async moveToCurrentStep(): void {
         const size = await this.state.currentStep.target.measure();
+
+        let verticalOffsetNumber = verticalOffset;
+        if (typeof verticalOffset === 'function') {
+          verticalOffsetNumber = verticalOffset();
+        }
 
         await this.modal.animateMove({
           width: size.width + OFFSET_WIDTH,
           height: size.height + OFFSET_WIDTH,
           left: size.x - (OFFSET_WIDTH / 2),
-          top: (size.y - (OFFSET_WIDTH / 2)) + verticalOffset,
+          top: (size.y - (OFFSET_WIDTH / 2)) + verticalOffsetNumber,
         });
       }
 
@@ -204,6 +214,7 @@ const copilot = ({
               next={this.next}
               prev={this.prev}
               stop={this.stop}
+              skip={this.skip}
               visible={this.state.visible}
               isFirstStep={this.isFirstStep()}
               isLastStep={this.isLastStep()}

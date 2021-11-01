@@ -24,7 +24,7 @@ type Props = {
   backdropColor: string,
   svgMaskPath?: svgMaskPath,
   onClick?: () => void,
-  currentStep: Step
+  currentStep: Step,
 };
 
 type State = {

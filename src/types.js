@@ -25,5 +25,5 @@ export type SvgMaskPathFn = (args: {
     x: number,
     y: number
   },
-  step: Step
+  step: Step,
 }) => string;
