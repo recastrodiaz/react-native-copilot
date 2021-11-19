@@ -4,6 +4,7 @@ export type Step = {
   order: number,
   visible: boolean,
   target: React$Element,
+  verticalPosition: 'bottom' | 'top' | undefined,
   wrapper: React$Element,
 };
 

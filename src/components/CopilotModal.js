@@ -133,8 +133,12 @@ class CopilotModal extends Component<Props, State> {
     const relativeToBottom = Math.abs(center.y - layout.height);
     const relativeToRight = Math.abs(center.x - layout.width);
 
-    const verticalPosition = relativeToBottom > relativeToTop ? 'bottom' : 'top';
+    let verticalPosition = relativeToBottom > relativeToTop ? 'bottom' : 'top';
     const horizontalPosition = relativeToLeft > relativeToRight ? 'left' : 'right';
+
+    if (this.props.currentStep?.verticalPosition) {
+      verticalPosition = this.props.currentStep?.verticalPosition;
+    }
 
     const tooltip = {};
     const arrow = {};
